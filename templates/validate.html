@@ -1,0 +1,50 @@
+<!--
+This sample web application provides a simple Click-Through Splash page for Cisco Meraki networks.
+Usage:
+* Configure your Cisco Meraki wireless network with a Click-through splash page.
+* Configure the "Custom URL" to point to your webserver that is hosting this HTML file.
+* Update the "Walled Garden" with the IP or Domain Name for your webserver and any supporting resources
+* Add any additional logic to forward the form data to your preferred service. By default, a simple alert
+displays the results of one form entry and then prints the Meraki provided parameters in the the footer. 
+Sample URL received from Meraki to this page.
+http://localhost:5000/?base_grant_url=https%3A%2F%2Fn143.network-auth.com%2Fsplash%2Fgrant&user_continue_url=http%3A%2F%2Fspeedof.me%2F&node_id=149624922840090&node_mac=88:15:44:60:1c:1a&gateway_id=149624922840090&client_ip=10.255.60.208&client_mac=f4:5c:89:9b:17:67
+This is example was written by:
+Cory Guynn
+www.InternetOfLEGO.com
+2016
+LICENSE: MIT
+"Have Fun!, use and abuse"
+-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    </head>
+    <div class="container">  
+      
+      <form id="loginForm" action="/validate/" method="post">
+        <center><a href="http://developers.meraki.com"><img src="../static/img/meraki-logo.png" width="50%"/></a></center>
+        <br>
+        <fieldset>
+          <input id="code" placeholder="Your Validation Code Here" type="text" autocomplete=one-time-code name=auth tabindex="2" required>
+          <input type="hidden" name="number" value={{number}} /> 
+          <input type="hidden" name="base_grant_url" value={{baseGrantURL}} /> 
+          <input type="hidden" name="user_continue_url" value={{userContinueURL}} /> 
+          <input type="hidden" name="node_mac" value={{clientIP}} /> 
+          <input type="hidden" name="client_ip" value={{clientMAC}} /> 
+          <input type="hidden" name="client_mac" value={{nodeMAC}} /> 
+        </fieldset>
+        <fieldset>
+          <button type="submit" >Log in to WiFi</button>
+        </fieldset>
+      </form>
+    </div>
+    <hr>
+    <h4>Debugging Stats</h4>
+    <p><label>Phone Number: </label>{{number}}</p>
+    <p><label>Base Grant URL: </label>{{baseGrantURL}}</p>
+    <p><label>User Continue URL: </label>{{userContinueURL}}</p>
+    <p><label>Client IP: </label>{{clientIP}}</p>
+    <p><label>Client MAC: </label>{{clientMAC}}</p>
+    <p><label>Access Point MAC: </label>{{nodeMAC}}</p>
+</html>
