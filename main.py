@@ -20,7 +20,7 @@ templates = Jinja2Templates(directory="templates")
 
 valid_phonenumbers = Phonenumbers()
 
-companyName = "Company Name Here"
+companyName = "TJ OpCo, LLC"
 
 @app.get("/", response_class=HTMLResponse)
 def read_root(request: Request, 
