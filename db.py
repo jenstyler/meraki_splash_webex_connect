@@ -10,12 +10,13 @@ load_dotenv()
 log = logging.getLogger(__name__)
 
 
+#this is the blacklist "db"
 @dataclass
 class Phonenumbers:
     r = redis.from_url(os.getenv("REDIS_URL"))
     if r:
         log.info("Connected to Redis")
-    db: list = ('+17633702428', '+12622217505')
+    db: list = ('+17633702428', '+19512334932')
 
 
     def _search(self, number):
