@@ -15,7 +15,7 @@ class Phonenumbers:
     r = redis.from_url(os.getenv("REDIS_URL"))
     if r:
         log.info("Connected to Redis")
-    db: list = ('+17633702428', '+15072220175')
+    db: list = ('+17633702428', '+12622217505')
 
 
     def _search(self, number):
